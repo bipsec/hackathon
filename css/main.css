@@ -1,0 +1,98 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ========== SHARED SIDEBAR ========== */
+.sidebar {
+  width: 230px; min-width: 230px;
+  background: #f8fafc;
+  border-right: 2px solid #e2e8f0;
+  display: flex; flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 1rem;
+  gap: 1rem;
+  z-index: 50;
+  overflow-y: auto;
+  height: 100vh;
+}
+.sidebar-brand {
+  font-size: 1.1rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .1em;
+  background: linear-gradient(135deg, #059669, #2563eb);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.task-selector { width: 100%; }
+.task-label {
+  display: block; font-size: .65rem; color: #64748b;
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: .06em; margin-bottom: 4px;
+}
+.task-dropdown {
+  width: 100%; padding: .5rem .6rem;
+  border: 2px solid #e2e8f0; border-radius: 8px;
+  background: #ffffff; color: #1e293b;
+  font-size: .78rem; font-weight: 600;
+  cursor: pointer; transition: border-color .2s;
+  appearance: auto;
+}
+.task-dropdown:focus { border-color: #3b82f6; outline: none; }
+
+.task-sidebar {
+  width: 100%; display: flex; flex-direction: column; gap: .8rem;
+}
+
+.sidebar-stats { width: 100%; display: flex; flex-direction: column; gap: .4rem; }
+.stat-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .35rem .6rem;
+  background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px;
+}
+.stat-row .s-label { font-size: .7rem; color: #64748b; }
+.stat-row .s-value { font-size: .78rem; color: #2563eb; font-weight: 700; }
+
+.legend { width: 100%; display: flex; flex-direction: column; gap: .3rem; }
+.legend-title { font-size: .7rem; color: #475569; font-weight: 600; margin-bottom: 2px; }
+.legend-item { display: flex; align-items: center; gap: .4rem; font-size: .72rem; color: #334155; }
+.legend-swatch { width: 13px; height: 13px; border-radius: 3px; border: 2px solid rgba(0,0,0,.1); }
+
+/* ═══ TASK VIEW CONTAINERS ═══ */
+.task-view {
+  flex: 1; display: flex; min-width: 0; height: 100vh;
+}
+.task-view .main {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: .8rem;
+  overflow: hidden;
+  position: relative;
+}
+.task-view .main h1 {
+  font-size: 1.2rem; font-weight: 700; margin-bottom: .1rem;
+  background: linear-gradient(135deg, #059669, #2563eb);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.task-view .main .subtitle {
+  color: #64748b; font-size: .75rem; margin-bottom: .4rem;
+}
+
+/* ═══ SHARED TOOLTIP ═══ */
+.tooltip {
+  position: fixed; pointer-events: none; background: #ffffff;
+  border: 1px solid #e2e8f0; border-radius: 8px;
+  padding: .6rem .8rem; font-size: .75rem; line-height: 1.5;
+  box-shadow: 0 8px 30px rgba(0,0,0,.15); z-index: 1001;
+  display: none; max-width: 240px; color: #1e293b;
+}
+.tooltip .tt-label { color: #64748b; font-size: .68rem; }
+.tooltip .tt-value { color: #0f172a; font-weight: 600; }
